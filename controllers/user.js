@@ -37,6 +37,7 @@ exports.signIn = catchAsync(async (req, res, next) => {
   });
 });
 
+//TASK 2 : Write a NodeJS API with middleware to validate JWT token and return status code 402 if not found or not valid.
 exports.protect = catchAsync(async (req, res, next) => {
   // 1) Getting token and check of it's there
   let token;

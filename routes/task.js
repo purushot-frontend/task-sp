@@ -2,6 +2,7 @@ const router = require("express").Router();
 const fs = require("fs");
 const cookieMiddlware = require("./../utils/cookieMiddleware");
 
+//TASK 1: Write a NodeJS API with middleware to check request header for cookies and return status code 400 if not found.
 router.route("/cookie").get(cookieMiddlware, (req, res) => {
   res.status(200).json({
     status: "success",
@@ -9,8 +10,9 @@ router.route("/cookie").get(cookieMiddlware, (req, res) => {
   });
 });
 
+//TASK 3 : Write a NodeJS API to read a JSON file and return as JSON response.
 router.route("/json").get((req, res) => {
-  const data = JSON.parse(fs.readFileSync("./../public/sample.json", "utf8"));
+  const data = JSON.parse(fs.readFileSync("./public/sample.json", "utf8"));
 
   res.status(200).json({
     status: "success",
@@ -18,16 +20,17 @@ router.route("/json").get((req, res) => {
   });
 });
 
+//TASK 5 : Write a NodeJS API to download a pdf file.
 router.route("/pdf").get((req, res) => {
-  let data = fs.readFileSync("./../public/sample.pdf");
+  let data = fs.readFileSync("./public/sample.pdf");
   res.contentType("application/pdf");
   res.send(data);
 });
 
+//TASK 4 : Write a NodeJS API to read a CSV file and return as JSON response.
 router.route("/csv").get((req, res) => {
-  //inspired by example from https://www.geeksforgeeks.org/how-to-convert-csv-to-json-file-having-comma-separated-values-in-node-js/
-
-  csv = fs.readFileSync("./../public/result.csv");
+  //for more information https://www.geeksforgeeks.org/how-to-convert-csv-to-json-file-having-comma-separated-values-in-node-js/
+  csv = fs.readFileSync("./public/result.csv");
   var array = csv.toString().split("\r");
 
   let result = [];
