@@ -14,7 +14,8 @@ exports.signIn = catchAsync(async (req, res, next) => {
     error.statusCode = 400;
     throw error;
   }
-  console.log(password, user.pass, user.email);
+
+  //comparing database hashed password with user input password
   const isValidPassword = await bcrypt.compare(password, user.password);
   if (!isValidPassword) {
     const error = new Error("Invalid Password");

@@ -1,4 +1,3 @@
-const mongoose = require("mongoose");
 const { ObjectId } = require("mongodb");
 const catchAsync = require("../utils/catchAsync");
 const Employee = require("./../models/employeeModel");
@@ -43,7 +42,6 @@ exports.updateEmployee = catchAsync(async (req, res, next) => {
 
 exports.deleteEmployee = catchAsync(async (req, res, next) => {
   const { employeeId } = req.params;
-  console.log(employeeId);
 
   const employee = await Employee.deleteOne({ _id: ObjectId(employeeId) });
   if (!employee) {
